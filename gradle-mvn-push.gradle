@@ -48,7 +48,6 @@ afterEvaluate { project ->
                 pom.groupId = GROUP
                 pom.artifactId = POM_ARTIFACT_ID
                 pom.version = VERSION_NAME
-                pom.optional = true
 
                 repository(url: getReleaseRepositoryUrl()) {
                     authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
@@ -62,6 +61,7 @@ afterEvaluate { project ->
                     packaging POM_PACKAGING
                     description POM_DESCRIPTION
                     url POM_URL
+                    optional true
 
                     scm {
                         url POM_SCM_URL
