@@ -82,6 +82,13 @@ afterEvaluate { project ->
                             name POM_DEVELOPER_NAME
                         }
                     }
+                    
+                    def installer = install.repositories.mavenInstaller
+def deployer = uploadArchives.repositories.mavenDeployer
+
+[installer, deployer]*.pom*.whenConfigured {pom ->
+    pom.dependencies.find {dep -> dep.groupId == 'group1' && dep.artifactId == 'runtime' }.optional = true
+}
                 }
             }
         }
